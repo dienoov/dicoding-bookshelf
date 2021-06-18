@@ -1,0 +1,291 @@
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("../fonts/SF-Pro-Display-Bold.otf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("../fonts/SF-Pro-Display-Medium.otf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("../fonts/SF-Pro-Display-Regular.otf");
+}
+
+:root {
+    --bookshelf-black: #2f383d;
+    --bookshelf-linen: #f0ece1;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "SF Pro Display", sans-serif;
+    background-color: var(--bookshelf-linen);
+    color: var(--bookshelf-black);
+    margin: 0;
+}
+
+header {
+    background-color: var(--bookshelf-linen);
+    border-bottom: 3px solid var(--bookshelf-black);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 1rem;
+}
+
+header nav {
+    text-align: center;
+}
+
+header nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header nav h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main > * {
+    margin-top: 2rem;
+    width: 768px;
+    max-width: calc(100% - 2rem);
+}
+
+button {
+    width: 100%;
+    border: 2px solid var(--bookshelf-black);
+    border-radius: .5rem;
+    background-image: linear-gradient(to top, var(--bookshelf-black) 50%, #1e2832 0);
+    background-size: 100% 200%;
+    background-position: bottom;
+    color: var(--bookshelf-linen);
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 100%;
+    padding: calc(.875rem - 2px);
+    transition: background-position .1s ease-out;
+}
+
+button:hover {
+    cursor: pointer;
+    background-position: top;
+}
+
+input {
+    width: 100%;
+    border: 2px solid var(--bookshelf-black);
+    border-radius: .5rem;
+    background-color: transparent;
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 100%;
+    padding: calc(.875rem - 2px);
+}
+
+input:focus {
+    outline: none;
+}
+
+#action form {
+    margin-top: 1rem;
+    position: relative;
+}
+
+#action form input {
+    padding: calc(.875rem - 2px) 2.75rem calc(.875rem - 2px) .875rem;
+}
+
+#action form svg {
+    position: absolute;
+    top: 50%;
+    right: .875rem;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.books {
+    padding-left: 0;
+    padding-bottom: .75rem;
+    list-style: none;
+    display: flex;
+    margin-right: -1rem;
+    margin-left: -1rem;
+    overflow-x: auto;
+}
+
+.books::-webkit-scrollbar {
+    height: .25rem;
+}
+
+.books::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.books::-webkit-scrollbar-thumb {
+    background-color: var(--bookshelf-black);
+    border-radius: .5rem;
+}
+
+.books li {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: calc(12rem + 2rem);
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.books img {
+    border-radius: .5rem;
+    width: 12rem;
+    height: 17.5rem;
+    object-fit: cover;
+}
+
+.books li h3, .books li h4 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.books li h4 {
+    font-size: 75%;
+    display: flex;
+}
+
+.books li h4::before {
+    content: "by";
+    margin-right: .2rem;
+    font-weight: 400;
+    opacity: .7;
+}
+
+.books li h4 span {
+    display: inline-block;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.books li::after {
+    content: "Click to edit";
+    position: absolute;
+    top: 0;
+    width: calc(100% - 2rem);
+    height: 100%;
+    background-color: rgba(47, 56, 61, 0);
+    color: var(--bookshelf-linen);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    transform: translateY(100%);
+    transition: transform .3s ease-out, background-color .3s ease-out .15s;
+}
+
+.books li:hover::after {
+    transform: translateY(0);
+    background-color: rgba(47, 56, 61, .9);
+    cursor: pointer;
+}
+
+.books > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#finished {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background-color: rgba(47, 56, 61, 0);
+    z-index: -1;
+    margin-top: 0;
+    overflow-y: auto;
+    transition: background-color .3s ease-out, z-index 0s linear .3s;
+}
+
+.show aside {
+    background-color: rgba(47, 56, 61, .9);
+    z-index: 2;
+    transition: z-index 0s linear 0s;
+}
+
+aside #modal {
+    background-color: var(--bookshelf-linen);
+    width: 768px;
+    max-width: 100%;
+    margin: 2rem auto;
+    border: 3px solid var(--bookshelf-black);
+    transform: translateY(-200%);
+    transition: transform .3s ease-out;
+}
+
+.show aside #modal {
+    transform: translateY(0);
+}
+
+aside #modal h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--bookshelf-black);
+    text-align: center;
+}
+
+aside #modal form {
+    padding: 2rem;
+}
+
+aside #modal form label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: .25rem;
+}
+
+aside #modal form input {
+    margin-bottom: 1rem;
+}
+
+aside #modal form button {
+    margin-top: .5rem;
+}
+
+form .check {
+    display: flex;
+}
+
+form .check input {
+    width: auto;
+    margin-left: 1rem;
+}
+
+button.delete {
+    background: rgb(243, 54, 49);
+    border: none;
+}

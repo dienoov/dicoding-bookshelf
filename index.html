@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dicoding Bookshelf</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html"><h1>bookshelf</h1></a>
+    </nav>
+</header>
+<main>
+    <div id="action">
+        <button type="button" id="new">Add new book</button>
+        <form>
+            <input type="text" placeholder="Search..." id="search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"/>
+            </svg>
+        </form>
+    </div>
+    <div id="unfinished">
+        <h2>Unfinished Books</h2>
+        <ul class="books"></ul>
+    </div>
+    <div id="finished">
+        <h2>Finished Books</h2>
+        <ul class="books"></ul>
+    </div>
+    <aside>
+        <div id="modal">
+            <h2>Book</h2>
+            <form id="book">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Book title" required>
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Book author" required>
+                <label for="year">Year</label>
+                <input type="number" id="year" placeholder="Year published" required>
+                <label for="cover">Cover</label>
+                <input type="file" id="cover" placeholder="Book cover" accept="image/*" required>
+                <div class="check">
+                    <label for="finish">Finished</label>
+                    <input type="checkbox" id="finish">
+                </div>
+                <button type="submit">Save</button>
+                <button type="button" class="delete" hidden>Delete</button>
+            </form>
+        </div>
+    </aside>
+</main>
+<script src="js/modal.js"></script>
+<script src="js/book.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
